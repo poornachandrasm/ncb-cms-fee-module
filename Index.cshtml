@@ -1,0 +1,163 @@
+﻿@model NCB_CMS.UI.Web.ViewModel.AcademicYearWiseFeesViewModel
+@{
+    ViewBag.Title = "NCBCMS";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>Academic Year Wise Fees Details</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-row">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.AcademicYearWiseFee.AcademicFeesId, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.AcademicYearWiseFee.AcademicFeesId, new { htmlAttributes = new { @class = "form-control", type="number" } })
+                @Html.ValidationMessageFor(model => model.AcademicYearWiseFee.AcademicFeesId, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.AcademicYearWiseFee.Year, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.AcademicYearWiseFee.Year, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                @Html.ValidationMessageFor(model => model.AcademicYearWiseFee.Year, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.AcademicYearWiseFee.Amount, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.AcademicYearWiseFee.Amount, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                @Html.ValidationMessageFor(model => model.AcademicYearWiseFee.Amount, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.AcademicYearWiseFee.Discount, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.AcademicYearWiseFee.Discount, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                @Html.ValidationMessageFor(model => model.AcademicYearWiseFee.Discount, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.AcademicYearWiseFee.ExtraFees, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.AcademicYearWiseFee.ExtraFees, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                @Html.ValidationMessageFor(model => model.AcademicYearWiseFee.ExtraFees, "", new { @class = "text-danger" })
+            </div>
+            <br />
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.AcademicYearWiseFee.PaymentId, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.AcademicYearWiseFee.PaymentId, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                @Html.ValidationMessageFor(model => model.AcademicYearWiseFee.PaymentId, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.AcademicYearWiseFee.ReciptNo, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.AcademicYearWiseFee.ReciptNo, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                @Html.ValidationMessageFor(model => model.AcademicYearWiseFee.ReciptNo, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.AcademicYearWiseFee.ReciptDate, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.AcademicYearWiseFee.ReciptDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessageFor(model => model.AcademicYearWiseFee.ReciptDate, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.AcademicYearWiseFee.ChallanNo, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.AcademicYearWiseFee.ChallanNo, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                @Html.ValidationMessageFor(model => model.AcademicYearWiseFee.ChallanNo, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.AcademicYearWiseFee.Description, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.AcademicYearWiseFee.Description, new { htmlAttributes = new { @class = "form-control AlphabetsOnly" } })
+                @Html.ValidationMessageFor(model => model.AcademicYearWiseFee.Description, "", new { @class = "text-danger" })
+            </div><br /><br /><br />
+            <div class="float-right">
+                @if (ViewBag.IsEdit != null && ViewBag.IsEdit == true)
+                {
+                    <input type="submit" name="Edit" class="btn btn-sm btn-success btn-block" value="Edit" />
+                    @Html.ActionLink("Cancel Delete", "Index", new { id = 0 }, new { @class = "btn btn-sm btn-danger btn-block" })
+                }
+                else
+                {
+                    <br/><input type="submit" value="Create" class="btn btn-primary" />
+                }
+
+            </div>
+        </div>
+
+    </div>
+}
+
+<hr />
+<legend class="text-center">Academic Fees Year Wise Details</legend>
+<table class="table table-striped table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AcademicYearWiseFee.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AcademicYearWiseFee.AcademicFeesId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AcademicYearWiseFee.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AcademicYearWiseFee.Discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AcademicYearWiseFee.ExtraFees)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AcademicYearWiseFee.PaymentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AcademicYearWiseFee.ReciptNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AcademicYearWiseFee.ReciptDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AcademicYearWiseFee.ChallanNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AcademicYearWiseFee.Description)
+        </th>
+        <th>Options</th>
+    </tr>
+
+    @foreach (var item in Model.AcademicYearWiseFees)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AcademicFeesId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExtraFees)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReciptNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReciptDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChallanNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Index", new { id = item.Id }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
